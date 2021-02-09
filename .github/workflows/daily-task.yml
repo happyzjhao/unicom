@@ -47,7 +47,9 @@ jobs:
 
     # 安装依赖
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd AutoSignMachine
+        npm install
 
     # 运行 bilibili 签到任务
     - name: Run bilibili daily task
