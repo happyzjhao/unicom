@@ -84,4 +84,4 @@ jobs:
         run: |
           cd ~/AutoSignMachine
           npm install
-          node index.js iqiyi --user=${user} --password=${password} --appid=${appid}
+          node index.js unicom --user=${user} --password=${password} --appid=${appid}
