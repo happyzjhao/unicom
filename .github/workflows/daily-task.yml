@@ -38,12 +38,14 @@ jobs:
     # 设置服务器时区为东八区 
     - name: Set time zone
       run: sudo timedatectl set-timezone 'Asia/Shanghai'
-
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+	 
+    - name: Cache node_modules
+      uses: actions/cache@v2 # 使用 GitHub 官方的缓存 Action。
+      env:
+          cache-name: cache-node-modules
       with:
-        node-version: ${{ matrix.node-version }}
-        registry-url: ${{ matrix.node-registry }}
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
 
     # 安装依赖
     - name: Install dependencies
