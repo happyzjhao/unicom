@@ -27,8 +27,8 @@ jobs:
       # 检出
       - name: Checkout
         run: |
-          git clone -b main https://github.com/DJ-clamp/AutoSignMachine.git
-          cd AutoSignMachine
+          git clone -b main https://github.com/DJ-clamp/AutoSignMachine.git ~/AutoSignMachine
+          cd ~/AutoSignMachine
       
       # 设置服务器时区为东八区 
       - name: Set time zone
@@ -49,7 +49,7 @@ jobs:
     # 安装依赖
       - name: Install dependencies
         run: |
-          cd AutoSignMachine
+          cd ~/AutoSignMachine
           npm install
 
     # 运行 bilibili 签到任务
@@ -82,5 +82,6 @@ jobs:
           password: ${{secrets.unicom_password}}
           appid: ${{secrets.unicom_appid}}
         run: |
+          cd ~/AutoSignMachine
           npm install
           node index.js iqiyi --user=${user} --password=${password} --appid=${appid}
