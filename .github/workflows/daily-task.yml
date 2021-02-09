@@ -70,7 +70,9 @@ jobs:
           P00PRU: ${{secrets.iqiyi_P00PRU}}
           QC005: ${{secrets.iqiyi_QC005}}
           dfp: ${{secrets.iqiyi_DFP}}
-        run: node index.js iqiyi --P00001=${P00001} --P00PRU=${P00PRU} --QC005=${QC005} --dfp=${dfp}
+        run: |
+          npm install
+          node index.js iqiyi --P00001=${P00001} --P00PRU=${P00PRU} --QC005=${QC005} --dfp=${dfp}
 
     # 运行 unicom 签到任务
       - name: Run unicom daily task
