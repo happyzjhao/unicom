@@ -32,8 +32,7 @@ jobs:
     # 检出
     - name: Checkout
       run: |
-          git clone -b master https://github.com/DJ-clamp/AutoSignMachine.git ./
-      
+         git clone -b master https://github.com/DJ-clamp/AutoSignMachine.git ./
       
     # 设置服务器时区为东八区 
     - name: Set time zone
@@ -48,14 +47,6 @@ jobs:
     # 安装依赖
     - name: Install dependencies
       run: npm install
-       
-    # 运行 52pojie 签到任务
-    - name: Run 52pojie daily task
-      if: ${{ env.ENABLE_52POJIE }}
-      env:
-        htVD_2132_auth: ${{secrets.52pojie_htVD_2132_auth}}
-        htVD_2132_saltkey: ${{secrets.52pojie_htVD_2132_saltkey}}
-      run: node index.js 52pojie --htVD_2132_auth=${htVD_2132_auth} --htVD_2132_saltkey=${htVD_2132_saltkey}
 
     # 运行 bilibili 签到任务
     - name: Run bilibili daily task
